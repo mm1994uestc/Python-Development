@@ -171,16 +171,116 @@ import cmath
 # cv2.destroyWindow('image')
 
 
-events = [i for i in dir(cv2) if 'EVENT' in i]
-print events
-def draw_circle(event, x, y, flags, param):
-    if event == cv2.EVENT_RBUTTONDBLCLK:
-        cv2.circle(param, (x, y), 100, (255, 0, 0), -1)
-img = np.zeros((512, 512, 3), np.uint8)
-cv2.namedWindow('image')
-cv2.setMouseCallback('image', draw_circle, img)
-while 1:
-    cv2.imshow('image', img)
-    if cv2.waitKey(0) == 27:
-        break
-cv2.destroyWindow('image')
+# events = [i for i in dir(cv2) if 'EVENT' in i]
+# print events
+# def draw_circle(event, x, y, flags, param):
+#     if event == cv2.EVENT_RBUTTONDBLCLK:
+#         cv2.circle(param, (x, y), 100, (255, 0, 0), -1)
+# img = np.zeros((512, 512, 3), np.uint8)
+# cv2.namedWindow('image')
+# cv2.setMouseCallback('image', draw_circle, img)
+# while 1:
+#     cv2.imshow('image', img)
+#     if cv2.waitKey(0) == 27:
+#         break
+# cv2.destroyWindow('image')
+
+
+# img = np.ones((512, 512, 3), np.uint8)
+# def nothing(x):
+#     pass
+# cv2.namedWindow('image')
+# cv2.createTrackbar('R', 'image', 0, 255, nothing)
+# cv2.createTrackbar('G', 'image', 0, 255, nothing)
+# cv2.createTrackbar('B', 'image', 0, 255, nothing)
+# switch = '0:0FF\n1:ON'
+# cv2.createTrackbar(switch, 'image', 0, 1, nothing)
+# while 1:
+#     cv2.imshow('image', img)
+#     k = cv2.waitKey(1)
+#     if k == 27:
+#         break
+#     r = cv2.getTrackbarPos('R', 'image')
+#     g = cv2.getTrackbarPos('G', 'image')
+#     b = cv2.getTrackbarPos('B', 'image')
+#     s = cv2.getTrackbarPos(switch, 'image')
+#
+#     if s == 0:
+#         img[:] = 0
+#     else:
+#         img[:] = [b, g, r]
+# cv2.destroyWindow('image')
+
+
+# img = cv2.imread('1.jpg')
+# print img.item(10, 10, 2)
+# img.itemset((10, 10, 2), 100)
+# print img.item(10, 10, 2)
+# cv2.imshow('image', img)
+# print img.dtype
+# print img.size
+# cv2.waitKey(0)
+# cv2.destroyWindow('image')
+
+
+# I = cv2.imread('1.jpg')
+# Mask = I[100:150, 100:150, :]
+# I[50:100, 50:100, :] = Mask
+# cv2.imshow('image', I)
+# cv2.waitKey(0)
+# cv2.destroyWindow('image')
+
+# I = cv2.imread('1.jpg')
+# b, g, r = cv2.split(I)
+# cv2.imshow('image', g)
+# cv2.waitKey(0)
+# Res = cv2.merge((b, g, r))
+# cv2.imshow('image', Res)
+# cv2.waitKey(0)
+# cv2.destroyWindow('image')
+# x = np.uint8([250])
+# y = np.uint8([10])
+# print cv2.add(x, y)
+# print x + y  # 250 + 10 = 260%256=4
+
+
+# I = cv2.imread('1.jpg')
+# X = np.size(I, 0)
+# Y = np.size(I, 1)
+# print X, Y
+# Res = cv2.imread('Linus.jpg')
+# Res = cv2.resize(Res, (Y, X))
+# Image = cv2.addWeighted(I, 0.9, Res, 0.1, 10)
+# cv2.namedWindow('image')
+# cv2.imshow('image', Image)
+# cv2.waitKey(0)
+# cv2.destroyWindow('image')
+
+# I = cv2.imread('1.jpg')
+# print I.shape
+# rows, cols, channels = I.shape
+# print rows, cols, channels
+# print I.size
+# roi = I[0:rows, 0:cols]
+# cv2.imshow('image', roi)
+# cv2.waitKey(0)
+# cv2.destroyWindow('image')
+
+
+# import time
+# Count1 = cv2.getTickCount()
+# T1 = time.time()
+# print 'I LOVE YOU!'
+# I = cv2.imread('1.jpg')
+# for i in xrange(5, 9, 2):
+#     I = cv2.medianBlur(I, i)
+# Count2 = cv2.getTickCount()
+# T2 = time.time()
+# T = (Count2 - Count1)/cv2.getTickFrequency()
+# t = T2-T1
+# print T, ' ', t  # Unit is 's'
+# cv2.namedWindow('image')
+# cv2.imshow('image', I)
+# cv2.waitKey(0)
+# cv2.destroyWindow('image')
+
