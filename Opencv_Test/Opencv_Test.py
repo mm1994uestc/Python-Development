@@ -284,18 +284,49 @@ import cmath
 # cv2.waitKey(0)
 # cv2.destroyWindow('image')
 
-Cap = cv2.VideoCapture('BlueCapture.mp4')
-while 1:
-    ret, frame = Cap.read()
-    blue = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-    l = np.array([100, 50, 50])
-    h = np.array([180, 255, 255])
-    mask = cv2.inRange(blue, l, h)
-    res = cv2.bitwise_and(frame, frame, mask=mask)
-    cv2.imshow('frame', frame)
-    cv2.imshow('mask', mask)
-    cv2.imshow('res', res)
-    k = cv2.waitKey(5) & 0xFF
-    if k == 27:
-        break
+# Cap = cv2.VideoCapture('BlueCapture.mp4')
+# while 1:
+#     ret, frame = Cap.read()
+#     blue = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+#     l = np.array([100, 50, 50])
+#     h = np.array([180, 255, 255])
+#     mask = cv2.inRange(blue, l, h)
+#     res = cv2.bitwise_and(frame, frame, mask=mask)
+#     cv2.imshow('frame', frame)
+#     cv2.imshow('mask', mask)
+#     cv2.imshow('res', res)
+#     k = cv2.waitKey(5) & 0xFF
+#     if k == 27:
+#         break
+# cv2.destroyAllWindows()
+
+
+# img = cv2.imread('1.jpg')
+# cv2.namedWindow('img')
+# cv2.imshow('img', img)
+# res = cv2.resize(img, None, fx=2, fy=2, interpolation=cv2.INTER_CUBIC)
+# cv2.namedWindow('res')
+# cv2.imshow('res', res)
+# cv2.waitKey(0)
+# cv2.destroyAllWindows()
+
+I = cv2.imread('1.jpg')
+M_Move = np.array(([1, 0, 100], [0, 1, 100]), np.float32)
+M_Roun = cv2.getRotationMatrix2D((100, 100), 30, 1.0)
+pos1 = np.float32([[50, 50], [200, 50], [50, 200]])
+pos2 = np.float32([[10, 100], [200, 50], [100, 250]])
+M_Tran = cv2.getAffineTransform(pos1, pos2)
+row, col = I.shape[:2]
+Res1 = cv2.warpAffine(I, M_Move, (row, col))
+cv2.namedWindow('image')
+cv2.imshow('image', I)
+cv2.namedWindow('Res1')
+cv2.imshow('Res1', Res1)
+Res2 = cv2.warpAffine(I, M_Roun, (row, col))
+cv2.namedWindow('Res2')
+cv2.imshow('Res2', Res2)
+dst = cv2.warpAffine(I, M_Tran, (row, col))
+cv2.namedWindow('dst')
+cv2.imshow('dst', dst)
+cv2.waitKey(0)
 cv2.destroyAllWindows()
