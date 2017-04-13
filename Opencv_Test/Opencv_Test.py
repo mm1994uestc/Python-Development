@@ -6,7 +6,8 @@ Edition: 1.0
 """
 import numpy as np
 import cv2
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
+from matplotlib import pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 import time
 import math
@@ -331,3 +332,45 @@ import cmath
 # cv2.waitKey(0)
 # cv2.destroyAllWindows()
 
+# I = cv2.imread('1.jpg')
+# Gray = cv2.cvtColor(I, cv2.COLOR_BGR2GRAY)
+# ret, thresh1 = cv2.threshold(Gray, 100, 255, cv2.THRESH_BINARY)
+# ret, thresh2 = cv2.threshold(Gray, 100, 255, cv2.THRESH_BINARY_INV)
+# ret, thresh3 = cv2.threshold(Gray, 100, 255, cv2.THRESH_TRUNC)
+# ret, thresh4 = cv2.threshold(Gray, 100, 255, cv2.THRESH_TOZERO)
+# ret, thresh5 = cv2.threshold(Gray, 100, 255, cv2.THRESH_TOZERO_INV)
+# cv2.namedWindow('Res1')
+# cv2.imshow('Res1', thresh1)
+# cv2.namedWindow('Res2')
+# cv2.imshow('Res2', thresh2)
+# cv2.namedWindow('Res3')
+# cv2.imshow('Res3', thresh3)
+# cv2.namedWindow('Res4')
+# cv2.imshow('Res4', thresh4)
+# cv2.namedWindow('Res5')
+# cv2.imshow('Res5', thresh5)
+# cv2.waitKey(0)
+# cv2.destroyAllWindows()
+
+# I = cv2.imread('1.jpg', 0)
+# I = cv2.medianBlur(I, 5)
+# ret, th1 = cv2.threshold(I, 127, 255, cv2.THRESH_BINARY)
+# th2 = cv2.adaptiveThreshold(I, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 11, 2)
+# th3 = cv2.adaptiveThreshold(I, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 11, 2)
+# cv2.imshow('th1', th1)
+# cv2.imshow('th2', th2)
+# cv2.imshow('th3', th3)
+# cv2.waitKey(0)
+# cv2.destroyAllWindows()
+
+I = cv2.imread('1.jpg', 0)
+ret1, th1 = cv2.threshold(I, 127, 255, cv2.THRESH_BINARY)
+ret2, th2 = cv2.threshold(I, 0, 255, cv2.THRESH_BINARY+cv2.THRESH_OTSU)
+bulr = cv2.GaussianBlur(I, (5, 5), 0)
+ret3, th3 = cv2.threshold(bulr, 0, 255, cv2.THRESH_BINARY+cv2.THRESH_OTSU)
+
+cv2.imshow('th1', th1)
+cv2.imshow('th2', th2)
+cv2.imshow('th3', th3)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
